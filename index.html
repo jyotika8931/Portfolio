@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyotika Singh - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: subtle-move 20s infinite linear;
+        }
+
+        @keyframes subtle-move {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            position: relative;
+            z-index: 1;
+            margin-top: 15px;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+
+        .section:hover h2::after {
+            width: 100px;
+        }
+
+        .education-item, .project-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-item h3, .project-item h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .institution, .tech-used {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: rgba(46, 204, 113, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 3px 0;
+            color: #555;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+
+        .objective {
+            background: rgba(155, 89, 182, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+            font-size: 1.05em;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .certifications ul, .achievements ul, .activities ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .certifications li, .achievements li, .activities li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .certifications li::before, .achievements li::before, .activities li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+
+        .languages span {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            margin: 5px 5px 5px 0;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .interests span {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            margin: 5px 5px 5px 0;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <h1>JYOTIKA SINGH</h1>
+            <div class="contact-info">
+                <p><strong>Email:</strong> jyotika.singh@email.com | <strong>Phone:</strong> +91-XXXXXXXXXX</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/jyotikasingh | <strong>GitHub:</strong> github.com/jyotikasingh</p>
+                <p><strong>Location:</strong> [Your City, State]</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>Career Objective</h2>
+                <div class="objective">
+                    Aspiring Computer Science student specializing in IoT and Data Science, seeking opportunities to apply technical skills in Python, database management, and data analytics. Eager to contribute to innovative projects while gaining hands-on experience in software development and data-driven solutions.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Bachelor of Technology in Computer Science (IoT/Data Science)</h3>
+                    <div class="institution">[University/College Name]</div>
+                    <p><strong>Year:</strong> 2nd Year (2023-2027)</p>
+                    <p><strong>CGPA:</strong> [X.XX/10.0]</p>
+                </div>
+                <div class="education-item">
+                    <h3>Class XII</h3>
+                    <div class="institution">[School Name]</div>
+                    <p><strong>Year:</strong> 2023</p>
+                    <p><strong>Percentage:</strong> [XX%]</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>C/C++</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database Technologies</h4>
+                        <ul class="skill-list">
+                            <li>MySQL</li>
+                            <li>Oracle</li>
+                            <li>PostgreSQL</li>
+                            <li>Amazon RDS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Domain Knowledge</h4>
+                        <ul class="skill-list">
+                            <li>Data Science</li>
+                            <li>Internet of Things (IoT)</li>
+                            <li>Data Analysis</li>
+                            <li>Database Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Technologies</h4>
+                        <ul class="skill-list">
+                            <li>Git/GitHub</li>
+                            <li>Data Visualization</li>
+                            <li>SQL Query Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Projects</h2>
+                <div class="project-item">
+                    <h3>[Project Name 1]</h3>
+                    <div class="tech-used">Technologies used: Python, MySQL</div>
+                    <p>Brief description of project related to Data Science or IoT. Key achievements or learnings from this project.</p>
+                </div>
+                <div class="project-item">
+                    <h3>[Project Name 2]</h3>
+                    <div class="tech-used">Technologies used: C++, PostgreSQL</div>
+                    <p>Brief description of project. Key achievements or learnings from this project.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Certifications</h2>
+                <div class="certifications">
+                    <ul>
+                        <li>Data Science Fundamentals</li>
+                        <li>Python Programming</li>
+                        <li>Database Management Systems</li>
+                        <li>IoT Development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Academic Achievements</h2>
+                <div class="achievements">
+                    <ul>
+                        <li>[Academic honors, awards, or recognitions]</li>
+                        <li>[Relevant coursework completed]</li>
+                        <li>[Coding competitions or hackathons]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Extracurricular Activities</h2>
+                <div class="activities">
+                    <ul>
+                        <li>[Technical clubs or societies membership]</li>
+                        <li>[Workshops or seminars attended]</li>
+                        <li>[Volunteer work or leadership roles]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Languages</h2>
+                <div class="languages">
+                    <span>English (Fluent)</span>
+                    <span>Hindi (Native)</span>
+                    <span>[Other Languages]</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Interests</h2>
+                <div class="interests">
+                    <span>Machine Learning & AI</span>
+                    <span>IoT Development</span>
+                    <span>Data Analytics</span>
+                    <span>Open Source</span>
+                    <span>Tech Blogging</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            References available upon request
+        </div>
+    </div>
+</body>
+</html>
